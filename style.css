@@ -1,0 +1,56 @@
+@layer global {
+
+    *,
+    *::after,
+    *::before {
+        box-sizing: border-box;
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--accent);
+    }
+
+    img,
+    picture,
+    video,
+    canvas,
+    svg {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    body {
+        margin: 0;
+    }
+
+    /* Mobile first approach */
+    .container {
+        display: grid;
+        gap: 20px;
+        grid-template-columns:
+            1fr repeat(3, calc((100% - 48px - 40px)/3)) 1fr;
+
+        @media(width >=calc(700/16*1rem)) {
+            grid-template-columns:
+                1fr repeat(6, calc((100% - 80px - 100px)/6)) 1fr;
+        }
+
+        @media(width >=calc(1200/16*1rem)) {
+            gap: 30px;
+            grid-template-columns:
+                1fr repeat(12, calc((1110px - 330px)/12)) 1fr;
+        }
+
+        /* all the components will span the 100% width */
+
+        >* {
+            grid-column: 2/-2;
+        }
+    }
+}
